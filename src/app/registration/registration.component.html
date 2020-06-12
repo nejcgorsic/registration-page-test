@@ -8,56 +8,65 @@
 </head>
 
 <body>
-<div class="container" id="container">
-  <!-- IMAGE ------------------- -->
-  <div class="image-holder">
-    <img src="../../assets/registration-img.jpg" alt="">
-  </div>
-
-  <!--FORM ----------------------->
-  <div class="form-inner">
-    <div *ngIf="user">
-      <form class="form">
-        <div class="form-header">
-          <h3>REGISTRATION</h3>
-        </div>
-        <div class="form-control">
-          <label>Username or E-mail:</label>
-          <input type="text" class="form-input" id="username" [(ngModel)]="user.username" placeholder="Username/Email"
-                 name="username">
-          <span style="color: red;" *ngIf="errorsContainsControl('username')">This field is required.</span>
-          <span style="color: red;" *ngIf="errorsContainsControl('usernameMatch')">Username must consist of at least 8 characters.</span>
-        </div>
-        <div class="form-control">
-          <label>Password:</label>
-          <input type="password" class="form-input" id="password" [(ngModel)]="user.password"
-                 placeholder="Password1234" name="password">
-          <span style="color: red;" *ngIf="errorsContainsControl('passwordsDoNotMatch')"> Passwords don't match.
-            </span>
-          <span style="color: red;" *ngIf="errorsContainsControl('password')">This field is required.</span>
-          <span style="color: red;" *ngIf="errorsContainsControl('passwordMatch')">The password must contain at least 8 characters, 1 lowercase character, 1 uppercase character and 1 number.</span>
-        </div>
-        <div class="form-control">
-          <label>Confirm Password:</label>
-          <input type="password" class="form-input" id="confirmPassword" [(ngModel)]="user.confirmPassword"
-                 placeholder="Confirm password" name="confirmPassword">
-          <span style="color: red;" *ngIf="errorsContainsControl('confirmPassword')">This field is required.</span>
-        </div>
-        <div class="form-control" *ngIf="showHide()">
-          <label>Email</label>
-          <input type="email" class="form-input" id="email" [(ngModel)]="user.email"
-                 placeholder="Email" name="email">
-          <span style="color: red;" *ngIf="errorsContainsControl('email')">This field is required.</span>
-        </div>
-
-        <button id="button" style="margin-top: 1rem;" (click)="checkValidity()">Create account</button>
-      </form>
+  <div class="container" id="container">
+    <!-- IMAGE ------------------- -->
+    <div class="image-holder">
+      <img src="../../assets/registration-img.jpg" alt="">
     </div>
+
+    <!--FORM ----------------------->
+    <div class="form-inner">
+      <div *ngIf="user">
+        <form class="form">
+          <div class="form-header">
+            <h3>REGISTRATION</h3>
+          </div>
+          <div class="form-control">
+            <label>Username or E-mail:</label>
+            <input type="text" class="form-input" id="username" [(ngModel)]="user.username" placeholder="Username/Email"
+              name="username">
+            <span style="color: red;" *ngIf="errorsContainsControl('username')">This field is required.</span>
+            <span style="color: red;" *ngIf="errorsContainsControl('usernameMatch')">Username must consist of at least 8
+              characters.</span>
+          </div>
+          <div class="form-control">
+            <label>Password:</label>
+            <input type="password" class="form-input" id="password" [(ngModel)]="user.password"
+              placeholder="Password1234" name="password">
+            <span style="color: red;" *ngIf="errorsContainsControl('passwordsDoNotMatch')"> Passwords don't match.
+            </span>
+            <span style="color: red;" *ngIf="errorsContainsControl('password')">This field is required.</span>
+            <span style="color: red;" *ngIf="errorsContainsControl('passwordMatch')">The password must contain at least
+              8 characters, 1 lowercase character, 1 uppercase character and 1 number.</span>
+          </div>
+          <div class="form-control">
+            <label>Confirm Password:</label>
+            <input type="password" class="form-input" id="confirmPassword" [(ngModel)]="user.confirmPassword"
+              placeholder="Confirm password" name="confirmPassword">
+            <span style="color: red;" *ngIf="errorsContainsControl('confirmPassword')">This field is required.</span>
+          </div>
+          <div class="form-control" *ngIf="showHide()">
+            <label>Email</label>
+            <input type="email" class="form-input" id="email" [(ngModel)]="user.email" placeholder="Email" name="email">
+            <span style="color: red;" *ngIf="errorsContainsControl('email')">This field is required.</span>
+          </div>
+
+
+
+          <button id="button" style="margin-top: 1rem;" (click)="checkValidity()" [ngClass]="{
+            'successfulluser': status
+          }">
+            {{successMsg}}</button>
+
+
+
+        </form>
+      </div>
+    </div>
+
   </div>
 
-</div>
-
-<!-- SCRIPT -->
+  <!-- SCRIPT -->
 </body>
 
 </html>
